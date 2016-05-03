@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap:cdvfile:https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="lib/async.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/app.js"></script>
+    <style type="text/css">
+    .custFooter{
+      margin-top: 0px !important;
+    }
+    </style>
+  </head>
+  <body ng-cloak>
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable" align-title="center">
+        <h1 class="title">Ionic Video Recorder</h1>
+      </ion-header-bar>
+
+      <div ng-controller="MainCtrl as main">
+      <ion-content>
+        <ion-list show-delete="false" can-swipe="true">
+            <ion-item class="item-icon-left item-icon-right" ng-repeat="file in files" type="item-text-wrap" ng-click="showFile(file)" >
+                <i class="icon ion-ios-videocam"></i>
+                <h2 ng-model="name">{{file.name}}</h2>
+                <p ng-model="mainduration">Duration : {{file.duration}}</p>
+                <ion-option-button class="button-positive" ng-click="shr(file)">Share</ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="dlt(file)">Delete</ion-option-button>
+            </ion-item>
+         </ion-list>
+      </ion-content>
+
+      <ion-footer-bar>
+        <button class="button button-block button-positive custFooter" ng-click="clicked()"  >
+          Capture a video
+        </button>
+       </div>
+    </ion-footer-bar>
+    </ion-pane>
+  </body>
+</html>
